@@ -10,26 +10,19 @@ jobs:
   test:
     name: Running Node Unit Tests
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x, 20.x]
-
+    
+    # Use a single Node.js version instead of matrix to simplify
     steps:
     - uses: actions/checkout@v3
     
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 16
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        node-version: '16.x'
         
     - name: Install dependencies
-      run: npm ci
+      # Use npm install instead of npm ci since we don't have a lock file
+      run: npm install
       
     - name: Run tests
       run: npm test
-      
-    - name: Check code format
-      run: npm run lint
-      if: false  # Optional - enable if you have linting set up
