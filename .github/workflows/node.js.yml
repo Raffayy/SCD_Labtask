@@ -10,18 +10,16 @@ jobs:
   test:
     name: Running Node Unit Tests
     runs-on: ubuntu-latest
-    
-    # Use a single Node.js version instead of matrix to simplify
+
     steps:
     - uses: actions/checkout@v3
     
-    - name: Use Node.js 16
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '16.x'
         
     - name: Install dependencies
-      # Use npm install instead of npm ci since we don't have a lock file
       run: npm install
       
     - name: Run tests
