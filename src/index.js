@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const eventRoutes = require('./routes/eventRoutes');
 const authRoutes = require('./routes/authRoutes');
-const reminderService = require('./services/reminderService');
+const reminderService = require('./services/reminderServices');
 
 // Load environment variables
 dotenv.config();
